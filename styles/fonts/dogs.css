@@ -1,0 +1,55 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+.logo{
+    display: block;
+    text-align: center;
+    background-color: beige;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+.main-class{
+    display: flex;
+    flex-direction: column;
+}
+.ditails-container{
+    display: flex;
+    flex-direction: column;
+}
+.details-image{
+    width: 60vw;
+    height: 50vw;
+}
+.ditails-title{
+    display: block;
+    background-color: aliceblue;
+}
+.thumbnails-list{
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 25vh;
+    overflow-y: scroll;
+    list-style: none;
+}
+.thumbnails-item{
+    border: solid 2px blueviolet;
+}
+.thumbnails-anchor{
+
+}
+.thumbnails-image{
+    width: 15vw;
+    height: 10vw;
+}
+.thumbnails-title{
+    display: block;
+    text-align: center;
+    background-color: antiquewhite;
+}
