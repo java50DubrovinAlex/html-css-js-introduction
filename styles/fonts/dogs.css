@@ -22,12 +22,14 @@ body{
 .ditails-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    
 }
 .details-image{
     width: 60vw;
     height: 50vw;
 }
-.ditails-title{
+.details-title{
     display: block;
     background-color: aliceblue;
 }
@@ -40,9 +42,10 @@ body{
 }
 .thumbnails-item{
     border: solid 2px blueviolet;
+    
 }
 .thumbnails-anchor{
-
+text-align: center;
 }
 .thumbnails-image{
     width: 15vw;
