@@ -16,6 +16,7 @@ body {
     background-color:rgb(119, 144, 137);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
    
     margin: 0;
 }
