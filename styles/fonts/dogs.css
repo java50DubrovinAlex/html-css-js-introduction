@@ -55,6 +55,9 @@ h2 {
     margin-bottom: 2vh;
     
 }
+.hidden .details-container{
+    display: none;
+}
 .details-frame{
     position: relative;
     
@@ -71,6 +74,11 @@ h2 {
     bottom: 5vh;
     left: -5vw;
 } 
+.details-hidden{
+    position: absolute;
+    top: 2vh;
+    right: 3vw;
+}
 .thumbnails-list {
     display: flex;
     flex-wrap: wrap;
@@ -81,8 +89,15 @@ h2 {
     list-style: none;
     justify-content: space-around;
     padding-right: 2vw;
+    padding-left: 2vw;
     margin-top: 3vh;
    
+}
+.hidden .thumbnails-list{
+    display: flex;
+    max-height: 65vh;
+    justify-content: space-around;
+    overflow-y: scroll;
 }
 
 .thumbnails-item {
@@ -138,6 +153,14 @@ h2 {
         /* width: 15vw; */
         margin-top: 3vw;
     }
+    .hidden .thumbnails-list{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 70vw;
+        max-height: 80vh;
+        margin-top: 0px;
+    }
     /* .details-image{
          width: 53vw;
         height: 42vw; 
@@ -174,6 +197,11 @@ h2 {
     .thumbnails-list{
         /* margin-top: 11vw; */
         max-height: 41vw; 
+    }
+    .hidden .thumbnails-list{
+        margin: 5vh;
+        max-height: 70vh;
+        align-items: center;
     }
     .logo{
         font-size: 2.2em;
