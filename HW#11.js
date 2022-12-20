@@ -53,3 +53,5 @@ function reversAnyNumber(number){
 
 }
 //reversAnyNumber(-123);
+//reversAnyNumber(123);
+//reversAnyNumber(0);
