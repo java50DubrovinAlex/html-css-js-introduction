@@ -6,17 +6,30 @@ function getDigitFromNumber(number){
 }
 
 function getSumOfDigitInNumber(number){
-   number = Math.floor(number);
+   number = Math.trunc(number);
+  let result =""
+  if(number < 0){
+    result = "-";
+    number *= -1;
+} else {
+    result ="";
+}
+   if(number < 0){
+        isPositive = false;       
+   }
    let sum = 0;
     while(number / 10 != 0){
         
         sum += getDigitFromNumber(number);
         number = Math.floor (number / 10);
     }
+    
     return console.log(sum);
+    
 }
 //getSumOfDigitInNumber(123);
 //getSumOfDigitInNumber(123.5);
+getSumOfDigitInNumber(-280.123);
 
 function printAnanas(){
     const A = String.fromCharCode(78)
@@ -32,7 +45,7 @@ function resultOfExpression(exspression){
 //resultOfExpression((20*50-(500+300))**2);
 
 function reversAnyNumber(number){
-    number = Math.floor(number);
+    number = Math.trunc(number);
     let result;
     if(number == 0){
         return console.log("0");
@@ -46,12 +59,15 @@ function reversAnyNumber(number){
     
     while(number / 10){
         result += getDigitFromNumber(number);
-        number = Math.floor (number / 10);
+        number = Math.ceil (number / 10);
 
     }
     return console.log(result);
 
 }
-//reversAnyNumber(-123);
-//reversAnyNumber(123);
-//reversAnyNumber(0);
+// reversAnyNumber(-123);
+// reversAnyNumber(123);
+// reversAnyNumber(0);
+// reversAnyNumber(-082);
+ reversAnyNumber("-082.333");
+

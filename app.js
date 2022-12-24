@@ -25,59 +25,64 @@
 
 // let res7 = true + true;
 
-function getDigitFromNumber(number){
-    let result = 0;
-    result = number % 10;
-    return result;
+// function getDigitFromNumber(number){
+//     let result = 0;
+//     result = number % 10;
+//     return result;
       
-}
+// }
 
-function getSumOfDigitInNumber(number){
-   number = Math.floor(number);
-   let sum = 0;
-    while(number / 10 != 0){
+// function getSumOfDigitInNumber(number){
+//    number = Math.floor(number);
+//    let sum = 0;
+//     while(number / 10 != 0){
         
-        sum += getDigitFromNumber(number);
-        number = Math.floor (number / 10);
-    }
-    return console.log(sum);
-}
-//getSumOfDigitInNumber(123);
-//getSumOfDigitInNumber(123.5);
+//         sum += getDigitFromNumber(number);
+//         number = Math.floor (number / 10);
+//     }
+//     return console.log(sum);
+// }
+// //getSumOfDigitInNumber(123);
+// //getSumOfDigitInNumber(123.5);
 
-function printAnanas(){
-    const A = String.fromCharCode(78)
-    let ananas =  "A" + A + "A" + A + "A" + "S";
-    return console.log(ananas.toLocaleLowerCase());
-}
+// function printAnanas(){
+//     const A = String.fromCharCode(78)
+//     let ananas =  "A" + A + "A" + A + "A" + "S";
+//     return console.log(ananas.toLocaleLowerCase());
+// }
 
-// printAnanas();
+// // printAnanas();
 
-function resultOfExpression(exspression){
-    return console.log(eval(exspression));
-}
-//resultOfExpression((20*50-(500+300))**2);
+// function resultOfExpression(exspression){
+//     return console.log(eval(exspression));
+// }
+// //resultOfExpression((20*50-(500+300))**2);
 
-function reversAnyNumber(number){
-    number = Math.floor(number);
-    let result;
-    if(number == 0){
-        return console.log("0");
-    } 
-    if(number < 0){
-        result = "-";
-        number *= -1;
-    } else {
-        result ="";
-    }
+// function reversAnyNumber(number){
+//     number = Math.floor(number);
+//     let result;
+//     if(number == 0){
+//         return console.log("0");
+//     } 
+//     if(number < 0){
+//         result = "-";
+//         number *= -1;
+//     } else {
+//         result ="";
+//     }
     
-    while(number / 10){
-        result += getDigitFromNumber(number);
-        number = Math.floor (number / 10);
+//     while(number / 10){
+//         result += getDigitFromNumber(number);
+//         number = Math.floor (number / 10);
 
-    }
-    return console.log(result);
+//     }
+//     return console.log(result);
 
-}
+// }
 //reversAnyNumber(-123);
-
+let str = "f123";
+let base = 10;
+if (str.charCodeAt(0) < charCodeAt(base)){
+     res = 1;
+ }
+console.log(res);
