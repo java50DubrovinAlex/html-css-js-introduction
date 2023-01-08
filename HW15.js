@@ -58,7 +58,7 @@ console.log(`evenAscOddDesc([5, 4, 3, 2, 1, -1, 6]) ${evenAscOddDesc([5, 4, 3, 2
 
 function getMin(array) {
     const res = array.reduce(function(min, cur){
-        return min = min > cur ? min = cur : min ;
+        return min > cur ? min = cur : min ;
         
     });
     return res;
@@ -68,7 +68,7 @@ console.log(`getMin([1, 2, 3, 4, 5]) ${getMin([1, 2, 3, 4, 5])}`);
 
 function getMax(array) {
     const res = array.reduce(function(max, cur){
-       return max = max < cur ? max = cur : max ;
+       return max < cur ? max = cur : max ;
         
     });
     return res;
