@@ -53,12 +53,13 @@ function evenAscOddDesc(array){
 }
 
 console.log(`evenAscOddDesc([20,-10,333,1000, 552, 7,-7]) ${evenAscOddDesc([20,-10,333,1000, 552, 7,-7])}`);
+console.log(`evenAscOddDesc([5, 4, 3, 2, 1, -1, 6]) ${evenAscOddDesc([5, 4, 3, 2, 1, -1, 6])}`);
 
 
 function getMin(array) {
     const res = array.reduce(function(min, cur){
-        min = min > cur ? min = cur : min ;
-        return min;
+        return min = min > cur ? min = cur : min ;
+        
     });
     return res;
 }
@@ -67,8 +68,8 @@ console.log(`getMin([1, 2, 3, 4, 5]) ${getMin([1, 2, 3, 4, 5])}`);
 
 function getMax(array) {
     const res = array.reduce(function(max, cur){
-        max = max < cur ? max = cur : max ;
-        return max;
+       return max = max < cur ? max = cur : max ;
+        
     });
     return res;
 }
