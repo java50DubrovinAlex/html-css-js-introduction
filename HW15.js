@@ -5,15 +5,16 @@ function evenOddSort(array) {
 //returns a sorted array
 //example input array [20,-10,333,1000, 552, 7,-7] => [20,-10, 1000, 552, 333,7, -7]
 
-const res = array.sort(function(elm1, elm2){
-    let isFirstEven = !(elm1 % 2) ? 1 : 2 ;
-    let isSecondEven = !(elm2 % 2) ? 1 : 2 ;
-    let res = isFirstEven - isSecondEven;
-    return res;
+const res = array.sort((elm1, elm2)=>{
+    // let isFirstEven = !(elm1 % 2) ? 1 : 2 ;
+    // let isSecondEven = !(elm2 % 2) ? 1 : 2 ;
+    // let res = isFirstEven - isSecondEven;
+    return Math.abs(elm1 % 2)-(elm2 % 2);
 
 });
 return res;
 }
+console.log (`evenOddSort([5, 4, 3, 2, 1, -1, 6]) ${evenOddSort([5, 4, 3, 2, 1, -1, 6])}`);
 
 console.log (`evenOddSort([20,-10,333,1000, 552, 7,-7]) ${evenOddSort([20,-10,333,1000, 552, 7,-7])}`);
 
@@ -35,21 +36,23 @@ console.log (`oddEvenSort([20,-10,333,1000, 552, 7,-7]) ${oddEvenSort([20,-10,33
 
 function evenAscOddDesc(array){
 
-    const res = array.sort(function(elm1, elm2){
-        let isFirstEven = !(elm1 % 2) ? 1 : 2 ;
-        let isSecondEven = !(elm2 % 2) ? 1 : 2 ;
-        let res = isFirstEven - isSecondEven;
-        if(!res && isFirstEven == 2){
-            res = elm2 -  elm1;
-       }else
-        if(!res){
-            res = elm1 - elm2;
-        }  
+    // const res = array.sort(function(elm1, elm2){
+    //     let isFirstEven = !(elm1 % 2) ? 1 : 2 ;
+    //     let isSecondEven = !(elm2 % 2) ? 1 : 2 ;
+    //     let res = isFirstEven - isSecondEven;
+    //     if(!res && isFirstEven == 2){
+    //         res = elm2 -  elm1;
+    //    }else
+    //     if(!res){
+    //         res = elm1 - elm2;
+    //     }  
         
-        return res;
+    //     return res;
 
-    });
-    return res; 
+    // });
+    // return res; 
+    
+    return array.sort((elm1, elm2) => {return Math.abs(elm1 % 2)-(elm2 % 2)});      
 }
 
 console.log(`evenAscOddDesc([20,-10,333,1000, 552, 7,-7]) ${evenAscOddDesc([20,-10,333,1000, 552, 7,-7])}`);
