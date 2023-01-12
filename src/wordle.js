@@ -5,6 +5,7 @@ let lettersDivs;
 const trialsElement = document.querySelector(".trials-remained");
 const gameResultElement = document.querySelector(".game-result");
 const playAgainElement = document.querySelector(".play-again");
+const hidenInput = document.querySelector(".guess-input");
 //varibales required for JS logic
 const wordsForGuess = ["pappy", "apple", "table", "gold", "silver", "index",
  "script", "peace", "picture"]
@@ -17,6 +18,7 @@ const wordsForGuess = ["pappy", "apple", "table", "gold", "silver", "index",
      fillLettersDivs();
      flGameOver = false;
      trials = word.length + 1;
+     hidenInput.style.display = "flex"
      playAgainElement.style.display = "none";
      gameResultElement.innerHTML = "";
      trialsElement.innerHTML = `remained trials ${trials}`;
@@ -34,7 +36,7 @@ const wordsForGuess = ["pappy", "apple", "table", "gold", "silver", "index",
     lettersDivs = document.querySelectorAll(".letter");
  }
  function onChange() {
-    let isWin = false;
+    
     if(flGameOver) {
         alert("game is over, press play-again")
     } else {
@@ -44,31 +46,25 @@ const wordsForGuess = ["pappy", "apple", "table", "gold", "silver", "index",
         if (trialWord.length != word.length) {
             alert("wrong number of letters");
         } else {
-           isWin = coloringWord(trialWord);
+           coloringWord(trialWord);
         }
        if(!trials){
         finishGame(false);
-       }else if(isAllletterGreen(lettersDivs)){
+       }else if(word === trialWord){
         finishGame(true);
        }
     }
     
  }
 
- function isAllletterGreen (leterDivArray){
-    // res = leterDivArray.every(function(leterDiv){
-    //    return leterDiv == green;
-    // });
-    isAllGreen = (cur) => cur = "green";
 
-    return leterDivArray.every(isAllGreen);
- }
  function coloringWord(trialWord) {
     const arWord = Array.from(trialWord);
     arWord.forEach(function(letter, index){
         lettersDivs[index].innerHTML = letter;
         lettersDivs[index].style.color = getColor(letter, index);
     })
+    
  }
  function getColor(letter, index) {
     let res = "red"
@@ -81,9 +77,11 @@ const wordsForGuess = ["pappy", "apple", "table", "gold", "silver", "index",
    if (winOrLose){
     playAgainElement.style.display = "flex";
     gameResultElement.innerHTML = "YOU WIN!!!"
-   } else {
+    hidenInput.style.display = "none"
+   } else if(!winOrLose){
     playAgainElement.style.display = "flex";
     gameResultElement.innerHTML = "YOU LOSE!!!"
+    hidenInput.style.display = "none"
    }
  }
  //actions

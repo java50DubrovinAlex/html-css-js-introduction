@@ -10,6 +10,10 @@
 }
 .play-again {
     display: none;
+    height: 4vw;
+    width: 10vw;
+    align-items: center;
+    justify-content: center;
 }
 .letter {
     width: 5vw;
@@ -18,4 +22,8 @@
     border: 1px solid black;
     text-align: center;
     font-size: 2em;
+}
+.guess-input{
+    display: flex;
+    
 }
