@@ -3,6 +3,11 @@
 
 }
 .letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    margin-top: 3vw;
     margin-left: 1vw;
     background-color: black;
     color: black;
