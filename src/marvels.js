@@ -40,7 +40,7 @@ function getWordDivs(questionsWords) {
 function checkWord() {
   //TODO
   
-  let isWin = questionsWords[numOfCurGame][1].toLowerCase() === wordInputElement.value ? true : false;
+  let isWin = questionsWords[numOfCurGame][1].toLowerCase() === wordInputElement.value.toLowerCase() ? true : false;
   finishGame(isWin);
     
   
@@ -55,7 +55,7 @@ function processLetter() {
     } else {
         
         for(let i = 0; i < questionsWords[numOfCurGame][1].length; i++){
-            if(inputLetter == answerWord[i].toLowerCase()){
+            if(inputLetter.toLowerCase() == answerWord[i].toLowerCase()){
                 wordLettersElement[i].innerHTML = answerWord[i];
                 wordLettersElement[i].style.background = "white";
                 remainedLettersNumber--;
