@@ -7,14 +7,11 @@ const wordElement = document.querySelector(".word");
 const resultMessage = document.getElementById("result-message");
 const playAgain = document.getElementById("play-again");
 let wordLettersElement;
-const questionsWords = [["The best soccer player in the world?", "Messi"], ["Where was Charlie Chaplin born?","London"], ["What is the capital of Scotland?", "Edinburg"], ["What is the capital of Wales?","Cardiff"]];
+const questionsWords = [["The best soccer player in the world?", "Messi"], ["Where was Charlie Chaplin born?","London"], ["What is the capital of Scotland?","Edinburg"], ["What is the capital of Wales?","Cardiff"]];
 // let currentIndex = 0;
-let initialLettersNumber;
 let remainedLettersNumber;
 let numOfCurGame = 0;
 //functions
- 
-
 function startGame(){
     letterInputElement.readOnly = false;
     wordInputElement.value = '';
@@ -25,7 +22,7 @@ function startGame(){
     wordElement.innerHTML = getWordDivs(questionsWords[numOfCurGame][1]);
     remainedLettersNumber = Math.round (questionsWords[numOfCurGame][1].length / 3);
     wordLettersElement = document.querySelectorAll(".letter");
-    remainedLettersElement.innerHTML = `letters remained ${remainedLettersNumber}`;
+    remainedLettersElement.innerHTML = `You can open ${remainedLettersNumber} letters`;
 }
 
 function getWordDivs(questionsWords) {
@@ -34,63 +31,56 @@ function getWordDivs(questionsWords) {
     for(let i = 0 ; i < questionsWords.length; i++){
         res = res + `<div class="letter"></div>`
     }
-    
     return res;
 }
+
 function checkWord() {
-  //TODO
-  
-  let isWin = questionsWords[numOfCurGame][1].toLowerCase() === wordInputElement.value.toLowerCase() ? true : false;
-  finishGame(isWin);
-    
-  
+  finishGame(questionsWords[numOfCurGame][1].toLowerCase() === wordInputElement.value.toLowerCase() ? true : false);
   wordInputElement.readOnly = true;
 }
+
+function checkLetterInWord (array, inputLetter){
+    if(!inputLetter){
+    for(let i = 0; i < array.length; i++){
+        wordLettersElement[i].innerHTML = array[i];
+        wordLettersElement[i].style.background = "white";  
+    }
+}else {
+    for(let i = 0; i < array.length; i++){
+        if(inputLetter.toLowerCase() == array[i].toLowerCase()){
+            wordLettersElement[i].innerHTML = array[i];
+            wordLettersElement[i].style.background = "white";
+            remainedLettersNumber--;
+        }
+    }
+}
+}
+
 function processLetter() {
     //TODO
-    const answerWord = questionsWords[numOfCurGame][1];
-    let inputLetter = document.getElementById("letter-input").value;
     if(!remainedLettersNumber){
         letterInputElement.readOnly = true;
     } else {
-        
-        for(let i = 0; i < questionsWords[numOfCurGame][1].length; i++){
-            if(inputLetter.toLowerCase() == answerWord[i].toLowerCase()){
-                wordLettersElement[i].innerHTML = answerWord[i];
-                wordLettersElement[i].style.background = "white";
-                remainedLettersNumber--;
-            }
-        }
-        
+        checkLetterInWord (questionsWords[numOfCurGame][1], document.getElementById("letter-input").value);
     }
-    remainedLettersElement.innerHTML = `letters remained ${(remainedLettersNumber < 0) ? remainedLettersNumber = 0 : remainedLettersNumber}`;
-    letterInputElement.value = "";
-
+        remainedLettersElement.innerHTML = `You can open ${(remainedLettersNumber < 0) ? remainedLettersNumber = 0 : remainedLettersNumber}
+        ${remainedLettersNumber > 1 || remainedLettersNumber == 0 ? "letters" : "letter"}`;
+        letterInputElement.value = "";
 }
+
 function takeChance() {
     //TODO
     wordInputElement.readOnly=false;
     letterInputElement.readOnly = true;
-
-
 }
+
 function finishGame(winOrLose) {
     //TODO
-   
-    const answerWord = questionsWords[numOfCurGame][1];
-    for(let i = 0; i < answerWord.length; i++){
-        wordLettersElement[i].innerHTML = answerWord[i];
-        wordLettersElement[i].style.background = "white";
-    }
+    checkLetterInWord(questionsWords[numOfCurGame][1]);
     numOfCurGame++;
-    if(numOfCurGame > questionsWords.length - 1){
-        numOfCurGame = 0;
-    }
+    numOfCurGame > questionsWords.length - 1 ? numOfCurGame = 0 : numOfCurGame;
     playAgain.style.display = "flex"
-    
     winOrLose ? resultMessage.innerHTML= "*** YOU WIN !!! ***" : resultMessage.innerHTML= "*** YOU LOSE !!! ***";
-    
-    
 }
 
 //actions
