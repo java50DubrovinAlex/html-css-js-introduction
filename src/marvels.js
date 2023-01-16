@@ -7,6 +7,7 @@ const wordElement = document.querySelector(".word");
 const resultMessage = document.getElementById("result-message");
 const playAgain = document.getElementById("play-again");
 let wordLettersElement;
+const guessButton = document.getElementById("guess-button");
 const questionsWords = [["The best soccer player in the world?", "Messi"], ["Where was Charlie Chaplin born?","London"], 
 ["What is the capital of Scotland?","Edinburg"], ["What is the capital of Wales?","Cardiff"]];
 // let currentIndex = 0;
@@ -14,12 +15,13 @@ let remainedLettersNumber;
 let numOfCurGame = 0;
 //functions
 function startGame(){
+    guessButton.style.display = "inline";
     letterInputElement.readOnly = false;
     wordInputElement.value = '';
     wordInputElement.readOnly = true;
     questionElement.innerHTML = questionsWords[numOfCurGame][0];
-    playAgain.style.display='none'
-    resultMessage.innerHTML='';
+    playAgain.style.display ='none'
+    resultMessage.innerHTML ='';
     wordElement.innerHTML = getWordDivs(questionsWords[numOfCurGame][1]);
     remainedLettersNumber = Math.round (questionsWords[numOfCurGame][1].length / 3);
     wordLettersElement = document.querySelectorAll(".letter");
@@ -82,6 +84,7 @@ function finishGame(winOrLose) {
     numOfCurGame > questionsWords.length - 1 ? numOfCurGame = 0 : numOfCurGame;
     playAgain.style.display = "flex"
     winOrLose ? resultMessage.innerHTML= "*** YOU WIN !!! ***" : resultMessage.innerHTML= "*** YOU LOSE !!! ***";
+    guessButton.style.display = "none";
 }
 
 //actions
