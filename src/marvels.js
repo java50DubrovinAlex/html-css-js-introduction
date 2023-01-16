@@ -7,7 +7,8 @@ const wordElement = document.querySelector(".word");
 const resultMessage = document.getElementById("result-message");
 const playAgain = document.getElementById("play-again");
 let wordLettersElement;
-const questionsWords = [["The best soccer player in the world?", "Messi"], ["Where was Charlie Chaplin born?","London"], ["What is the capital of Scotland?","Edinburg"], ["What is the capital of Wales?","Cardiff"]];
+const questionsWords = [["The best soccer player in the world?", "Messi"], ["Where was Charlie Chaplin born?","London"], 
+["What is the capital of Scotland?","Edinburg"], ["What is the capital of Wales?","Cardiff"]];
 // let currentIndex = 0;
 let remainedLettersNumber;
 let numOfCurGame = 0;
