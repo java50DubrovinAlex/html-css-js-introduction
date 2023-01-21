@@ -56,8 +56,6 @@ function getEmployeesByCity(employees, city) {
 function getEmployeeNames(employees) {
     //TODO
     //returns array of all Employee names
-
-    
     return employees.map(employees => employees.name); // return employees.reduce((acc, cur) => acc.concat(cur.name), []);
 }
 
@@ -74,16 +72,92 @@ function computeSalaryBudget(employees) {
     //computes and returns total salary for all Employee objects
     return employees.reduce((res, cur) => res + cur.salary, 0);
 }
+//////////////////////////////////////////////////////////////////////////
 
-const res = getEmployee(employees, 129);
-console.log(res);
+function createAddress (city, street) {
+    return {city, street}
+}
+function createPerson(id, name, address) {
+    return {id, name, address}
+}
+const persons = [
+    createPerson(123, "Vasya", createAddress("Rehovot", "Parshani")),
+    createPerson(124, "Olya",  createAddress("Rehovot", "Pr.Plaut")),
+    createPerson(125, "Tolya", createAddress("Tel-Aviv", "Dizengoff")),
+    createPerson(126, "Sara",  createAddress("Lod", "Sokolov"))
+] 
 
-console.table(getEmployeesBySalary(employees, 1000, 9000));
+//=======================================
+// 1 ) Calculate IN ONE LINE OF CODE the name of Person living in Rehovot and having maximal value of 'id'
+//     The expected result: Olya
+function rehovotMaxId(persons){
+    
+    return (persons.sort((perOne, perTow) => perTow.id - perOne.id)).find(per => per.address.city === "Rehovot");
+}
 
-console.table(getEmployeesByCity(employees, "Lod"));
+// function getSumOfCitys(persons){
 
-console.table(getEmployeeNames(employees));
+// //=======================================
+// // 2*) Build IN ONE LINE OF CODE the statistics of persons amount per city. 
+// //     The expected result is object: {Rehovot:2, 'Tel-Aviv':1,Lod:1}
 
-console.table(sortEmployeesByAge(employees));
 
-console.log(computeSalaryBudget(employees));
+//     const result = persons.address.reduce((acc, cur) =>{  cur.address.city ? acc[cur.address.city], {});
+// }
+// console.log(getSumOfCitys(persons));
+// console.table(rehovotMaxId(persons));
+
+// const res = getEmployee(employees, 129);
+// console.log(res);
+
+// console.table(getEmployeesBySalary(employees, 1000, 9000));
+
+// console.table(getEmployeesByCity(employees, "Lod"));
+
+// console.table(getEmployeeNames(employees));
+
+// console.table(sortEmployeesByAge(employees));
+
+// console.log(computeSalaryBudget(employees));
+
+
+/// CW - 19
+
+
+// let field = "salary";
+// console.log(employees[0][field]);
+
+// function displayFieldValue(employees, index, field){
+//     console.log(employees[index][field]);
+// }
+
+// displayFieldValue(employees, 3, "birthYear");
+
+// employees[0].department = "QA";
+
+// displayFieldValue(employees, 0, "department");
+// delete employees[0].department;
+// displayFieldValue(employees, 0, "department");
+
+// function computeMinMaxAvgSalary(employees){
+//     const res = employees.reduce((res, empl) => {
+//         if(res.minSalary > employees.salary){
+//             res.minSalary = empl.salary;
+//         } else if(res.maxSalary < empl.salary){
+//             res.maxSalary = empl.salary;
+//         }
+//         res.avgSalary += empl.salary;
+//         return res;
+//     }, {minSalary: employees[0].salary, maxSalary: employees[0].salary, avgSalary: 0});
+//     res.avgSalary /= employees.length;
+//     return res;
+// }
+
+// function displayValue(minMaxAvg, field){
+//     console.log(minMaxAvg[field]);
+// }
+
+// const minMaxAvg = computeMinMaxAvgSalary(employees);
+// displayValue(minMaxAvg, "maxSalary");
+// displayValue(minMaxAvg, "minSalary");
+// displayValue(minMaxAvg, "avgSalary");
