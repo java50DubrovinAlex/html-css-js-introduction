@@ -85,13 +85,7 @@ function getMostPopulatedCountry(employees) {
 }
 function getSortObjectMostPopulatedCountry(employees) {
     const res = {};
-    employees.forEach(empl => {
-        if (!res[empl.address.country]) {
-            res[empl.address.country] = 1;
-        } else {
-            res[empl.address.country]++;
-        }
-    });
+    employees.forEach(empl => !res[empl.address.country] ? res[empl.address.country] = 1 : res[empl.address.country]++);
     return res;
 }
 //returns a given number (conter) of countries with most amount of employees
