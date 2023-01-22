@@ -1,16 +1,16 @@
-// function createEmployee(id, name, birthYear, salary, city, country) {
-//     return { id, name, birthYear, salary, address: { city, country } }
-// }
-// const employees = [
-//     createEmployee(125, "Sara", 1985, 20000, "New York", "USA"),
-//     createEmployee(123, "Vasya", 2000, 15000, "Lod", "Israel"),
-//     createEmployee(124, "David", 1975, 15500, "Tel Aviv", "Israel"),
-//     createEmployee(126, "Abraham", 1990, 13000, "London", "UK"),
-//     createEmployee(127, "Moshe", 2000, 15000, "Rehovot", "Israel"),
-//     createEmployee(128, "Goga", 1993, 10000, "Tbilisi", "Gorgia"),
-//     createEmployee(129, "Sasha", 2000, 25000, "Ramat Gan", "Israel"),
-//     createEmployee(130, "Victor", 2003, 10000, "Arad", "Israel")
-// ]
+function createEmployee(id, name, birthYear, salary, city, country) {
+    return { id, name, birthYear, salary, address: { city, country } }
+}
+const employees = [
+    createEmployee(125, "Sara", 1985, 20000, "New York", "USA"),
+    createEmployee(123, "Vasya", 2000, 15000, "Lod", "Israel"),
+    createEmployee(124, "David", 1975, 15500, "Tel Aviv", "Israel"),
+    createEmployee(126, "Abraham", 1990, 13000, "London", "UK"),
+    createEmployee(127, "Moshe", 2000, 15000, "Rehovot", "Israel"),
+    createEmployee(128, "Goga", 1993, 10000, "Tbilisi", "Gorgia"),
+    createEmployee(129, "Sasha", 2000, 25000, "Ramat Gan", "Israel"),
+    createEmployee(130, "Victor", 2003, 10000, "Arad", "Israel")
+]
 
 // //displayFieldValue(employees, 3, "id");
 // // employees[0].salary = 20000;
@@ -71,9 +71,12 @@
 //     return res;
 // }
 // displayStringOccurrences(strings);
+
+
+
 //HW #19
+//returns country with most amount of employees
 function getMostPopulatedCountry(employees) {
-    //TODO 
     //returns country with most amount of employees
     const res = getSortObjectMostPopulatedCountry(employees);
     sorted = Object.entries(res).sort((a, b) => b[1] - a[1]);
@@ -91,52 +94,44 @@ function getSortObjectMostPopulatedCountry(employees) {
     });
     return res;
 }
+//returns a given number (conter) of countries with most amount of employees
 function getMostPupulatedCountries(employees, counter) {
-    //returns a given number (conter) of countries with most amount of employees
     const objCountryEmpl = getSortObjectMostPopulatedCountry(employees);
     const res = Object.entries(objCountryEmpl).sort((a, b) => b[1] - a[1]).slice(0, counter);
-    // const res = [];
-    // for(let i = 0; i < counter; i++){
-    //     res[i] = sortedArrayBtEmployees[i];
-    // }
 
     return res;
 }
+
+
+
+//returns true if a given anagram is indeed an angram of a given word
+//anagram must have  same length as word
+//anagram must have all letters from word
+//hello anagram examples: elolh, olleh, ohell, lehol
+//exampls non-anagrams: eloll (no h), ollehh(different length),
+// olaeh ("a" doesn't exist in word), oleh(different length)
 function isAnagram(word, anagram) {
-    //TODO 
-    //returns true if a given anagram is indeed an angram of a given word
-    //anagram must have  same length as word
-    //anagram must have all letters from word
-    //hello anagram examples: elolh, olleh, ohell, lehol
-    //exampls non-anagrams: eloll (no h), ollehh(different length),
-    // olaeh ("a" doesn't exist in word), oleh(different length)
 
-    let res = word.length != anagram.length ? false : true;
-    let stringOccurrencesWord = getString(word);
-    let stringOccurrencesAnagram = getString(anagram);
-    let str1 = Object.entries(stringOccurrencesWord).sort((a, b) => a[1] - b[1]);
-    let str2 = Object.entries(stringOccurrencesAnagram).sort((a, b) => a[1] - b[1]);
-    // for (let i = 0; i < str1.length; i++) {
-    //     if (res) {
-    //         str1[i][1] == str2[i][1] ? res : res = false;
-    //     }
-    // }
-    res = str1.every((letter, index) => letter[1] === str2[index][1]);
-    return res;
-}
 
-function getString(string) {
-    const res = {};
-    string.split("").forEach(str => {
-        if (!res[str]) {
-            res[str] = 1;
-        } else {
-            res[str]++;
+    let res = false;
+    if (word.length == anagram.length) {
+        let sortWord = word.split('').sort().join('');
+        let sortAnagram = anagram.split('').sort().join('');
+        function creatWordAnagram(word, anagram) {
+            return { word, anagram }
         }
-    });
-    return res;
-}
+        let wordAnagram = creatWordAnagram(sortWord, sortAnagram);
+            
+        
+        if(wordAnagram.word === wordAnagram.anagram){
+            res = true;
+        }
+        
+    }
 
+    return res;
+
+}
 
 
 getSortObjectMostPopulatedCountry(employees);
