@@ -111,26 +111,17 @@ function getMostPupulatedCountries(employees, counter) {
 //exampls non-anagrams: eloll (no h), ollehh(different length),
 // olaeh ("a" doesn't exist in word), oleh(different length)
 function isAnagram(word, anagram) {
-
-
     let res = false;
     if (word.length == anagram.length) {
-        let sortWord = word.split('').sort().join('');
-        let sortAnagram = anagram.split('').sort().join('');
-        function creatWordAnagram(word, anagram) {
-            return { word, anagram }
-        }
-        let wordAnagram = creatWordAnagram(sortWord, sortAnagram);
-            
-        
-        if(wordAnagram.word === wordAnagram.anagram){
+        let wordAnagram = {
+            sortWord: word.split('').sort().join(''),
+            sortAnagram: anagram.split('').sort().join('')
+        };
+        if(wordAnagram.sortWord === wordAnagram.sortAnagram){
             res = true;
-        }
-        
+        }   
     }
-
     return res;
-
 }
 
 
